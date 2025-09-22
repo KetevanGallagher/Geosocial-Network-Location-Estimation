@@ -6,7 +6,7 @@ Geosocial networks serve as a critical bridge between cyber and physical worlds 
 We propose and evaluate four algorithms for linking social and spatial networks: (i) a greedy assignment algorithm, (ii) a hierarchical approach using graph partitioning, (iii) a spatially-aware adaptation of force-directed graph drawing, and (iv) a modified version of Spatial Label Propagation. Each method is further enhanced to incorporate a small number of known anchor vertex—users with known locations. Using anonymized social network data from the Virginia, USA region, our empirical evaluation shows that even a sparse set of anchor points can enable accurate estimation of users' home locations. These findings highlight both the potential analytical value and the privacy risks associated with linking social and spatial data.
 
 ## Algorithms
-The three proposed algorithms are included in this repository:
+The four proposed algorithms are included in this repository:
 1. The Greedy algorithm. This algorithm matches vertices to locations that are close to the locations of vertices they are connected to. Vertices are processed iteratively in order of degree.
 2. The Partitioning-Based algorithm. This algorithm utilizes METIS, a graph partitioning software, to match clusters of vertices to clusters of locations.
 3. The Graph Drawing algorithm. This algorithm utilizes the NetworkX Spring Layout function to generate locations for each vertex in the social network. There are two versions of this algorithm to match vertices from generated to actual locations: one where vertices are matched to locations in order of highest degree (labeled as greedy), and one where vertices are matched using a modified Jonker-Volgenant algorithm (labeled as optimal).
