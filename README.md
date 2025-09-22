@@ -9,7 +9,8 @@ We propose and evaluate four algorithms for linking social and spatial networks:
 The three proposed algorithms are included in this repository:
 1. The Greedy algorithm. This algorithm matches vertices to locations that are close to the locations of vertices they are connected to. Vertices are processed iteratively in order of degree.
 2. The Partitioning-Based algorithm. This algorithm utilizes METIS, a graph partitioning software, to match clusters of vertices to clusters of locations.
-3. The Graph Drawing algorithm. This algorithm utilizes the NetworkX Spring Layout function to generate locations for each vertex in the social network. There are two versions of this algorithm to match vertices from generated to actual locaitons: one where vertices are matched to locations in order of highest degree, and one where vertices are matched using a modified Jonker-Volgenant algorithm.
+3. The Graph Drawing algorithm. This algorithm utilizes the NetworkX Spring Layout function to generate locations for each vertex in the social network. There are two versions of this algorithm to match vertices from generated to actual locations: one where vertices are matched to locations in order of highest degree (labeled as greedy), and one where vertices are matched using a modified Jonker-Volgenant algorithm (labeled as optimal).
+4. Spatial Label Propagation. This algorithm uses the Spatial Lable Propagation, outlined in [[1]](#1). This algorithm is modifed so that new locations that are generated continously are mapped to the set of known locations using the two versions described for the Graph Drawing Algorithm: greedy and optimal.
 
 Requirements for each algorthim:
 * An adjacency matrix to represent the social network
@@ -22,16 +23,19 @@ Each algorithm returns a dictionary that maps vertices to locations.
 |![](ExperimentalResults/FacebookImages/FacebookGroundTruth.png)<br>Ground Truth Network for Facebook Location Data|![](ExperimentalResults/FairfaxImages/FairfaxGroundTruth.png)<br>Ground Truth Network for Fairfax Mobility Data|
 |:-:|:-:|
 
-The three proposed algorithms were tested on three datasets: Facebook Social Connectedness Data [[1]](#1), Fairfax Mobility Data [[2]](#2), and a Synthetic Geosocial Erdős-Rényi Network [[3]](#3). The social networks and locations for the first two datasets were generated using the code in the folder Datasets. For the Synthetic Geosocial Erdős-Rényi Network, random locations were used and the social network was generated using the code in the [Synthetic Geosocial Networks Repository](https://github.com/KetevanGallagher/Synthetic-Geosocial-Networks). The Ground Truth Networks for the Facebook and Fairfax data are shown in the figure above.
+The three proposed algorithms were tested on three datasets: Facebook Social Connectedness Data [[2]](#2), Fairfax Mobility Data [[3]](#3), and a Synthetic Geosocial Erdős-Rényi Network [[4]](#4). The social networks and locations for the first two datasets were generated using the code in the folder Datasets. For the Synthetic Geosocial Erdős-Rényi Network, random locations were used and the social network was generated using the code in the [Synthetic Geosocial Networks Repository](https://github.com/KetevanGallagher/Synthetic-Geosocial-Networks). The Ground Truth Networks for the Facebook and Fairfax data are shown in the figure above.
 
 Detailed quantitative results, including the average distance between the assigned location and true location, the number of nodes inferred correctly, run time, and the standard deviations of average distances can be found under [ExperimentalResults](ExperimentalResults). These quantitative results are the average of 30 trials. The standard deviations displayed are calculated from the 30 trials.
 
 ## References
 <a id="1">[1]</a> 
-M. Bailey, R. Cao, T. Kuchler, J. Stroebel, and A. Wong. Social connectedness: Measurement, determinants, and effects. *Journal of Economic Perspectives*, 32(3):259–280, 2018.
+D. Jurgens, “That’s What Friends Are For: Inferring Location in Online Social Media Platforms Based on Social Relationships”, ICWSM, vol. 7, no. 1, pp. 273-282, Aug. 2021.
 
 <a id="2">[2]</a> 
-Y. Kang, S. Gao, Y. Liang, M. Li, J. Rao, and J. Kruse. Multiscale dynamic human mobility flow dataset in the us during the covid-19 epidemic. *Scientific data*, 7(1):390, 2020.
+M. Bailey, R. Cao, T. Kuchler, J. Stroebel, and A. Wong. Social connectedness: Measurement, determinants, and effects. *Journal of Economic Perspectives*, 32(3):259–280, 2018.
 
 <a id="3">[3]</a> 
+Y. Kang, S. Gao, Y. Liang, M. Li, J. Rao, and J. Kruse. Multiscale dynamic human mobility flow dataset in the us during the covid-19 epidemic. *Scientific data*, 7(1):390, 2020.
+
+<a id="4">[4]</a> 
 K. Gallagher, T. Anderson, A. Crooks, and A. Züfle. Synthetic geosocial network generation. In *Proceedings of the 7th ACM SIGSPATIAL Workshop on Location-based Recommendations, Geosocial Networks and Geoadvertising*, pages 15–24, 2023.
