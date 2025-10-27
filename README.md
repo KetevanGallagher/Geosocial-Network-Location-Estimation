@@ -9,7 +9,7 @@ The four proposed algorithms are included in this repository:
 1. The Greedy algorithm. This algorithm matches vertices to locations that are close to the locations of vertices they are connected to. Vertices are processed iteratively in order of degree.
 2. The Partitioning-Based algorithm. This algorithm utilizes METIS, a graph partitioning software, to match clusters of vertices to clusters of locations.
 3. The Graph Drawing algorithm. This algorithm utilizes the NetworkX Spring Layout function to generate locations for each vertex in the social network. There are two versions of this algorithm to match vertices from generated to actual locations: one where vertices are matched to locations in order of highest degree (labeled as greedy), and one where vertices are matched using a modified Jonker-Volgenant algorithm (labeled as optimal).
-4. Spatial Label Propagation. This algorithm uses the Spatial Lable Propagation, outlined in [[1]](#1). This algorithm is modifed so that new locations that are generated continously are mapped to the set of known locations using the two versions described for the Graph Drawing Algorithm: greedy and optimal.
+4. Spatial Label Propagation. This algorithm uses the Spatial Label Propagation, outlined in [[1]](#1). This algorithm is modifed so that new locations that are generated continously are mapped to the set of known locations using the two versions described for the Graph Drawing Algorithm: greedy and optimal.
 
 Requirements for each algorthim:
 * An adjacency matrix to represent the social network
